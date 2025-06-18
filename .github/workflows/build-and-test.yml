@@ -27,6 +27,7 @@ jobs:
 
       - name: Lint du code
         run: npm run lint
+        working-directory: ./frontend
 
       - name: Run tests
         run: npm test
