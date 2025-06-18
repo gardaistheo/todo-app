@@ -1,4 +1,4 @@
-name: Build and Test (No Deploy)
+name: Build and Test Frontend
 
 on:
   push:
@@ -9,29 +9,29 @@ on:
       - devlop
 
 jobs:
-  build-test:
+  frontend-build-test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
 
     steps:
-      - name: Checkout repo
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 18
 
-      - name: Installation des dépendances
+      - name: Install dependencies
         run: npm install
+        working-directory: ./frontend
 
       - name: Lint du code
         run: npm run lint
 
-      - name: Run des tests
+      - name: Run tests
         run: npm test
+        working-directory: ./frontend
 
-      - name: Build run
+      - name: Build app
         run: npm run build
+        working-directory: ./frontend
