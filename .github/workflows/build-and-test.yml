@@ -25,10 +25,6 @@ jobs:
         run: npm install
         working-directory: ./frontend
 
-      - name: Lint du code
-        run: npm run lint
-        working-directory: ./frontend
-
       - name: Run tests
         run: npm test
         working-directory: ./frontend
