@@ -1,0 +1,37 @@
+name: Build and Test (No Deploy)
+
+on:
+  push:
+    branches:
+      - devlop
+  pull_request:
+    branches:
+      - devlop
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Installation des dépendances
+        run: npm ci
+
+      - name: Lint du code
+        run: npm run lint
+
+      - name: Run des tests
+        run: npm test
+
+      - name: Build run
+        run: npm run build
