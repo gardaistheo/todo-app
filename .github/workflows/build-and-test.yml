@@ -29,12 +29,20 @@ jobs:
         run: npm install --save-dev jest-fetch-mock
         working-directory: ./frontend
 
+      - name: Install eslint
+        run: npm install --save-dev eslint
+        working-directory: ./frontend
+
       - name: Fix permissions
         run: chmod -R +x node_modules/.bin
         working-directory: ./frontend
         
       - name: Run tests
         run: npm test
+        working-directory: ./frontend
+        
+      - name: Run eslint
+        run: npm run lint
         working-directory: ./frontend
         
       - name: Build app
