@@ -25,7 +25,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Installation des dépendances
-        run: npm ci
+        run: npm install
 
       - name: Lint du code
         run: npm run lint
