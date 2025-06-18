@@ -25,6 +25,10 @@ jobs:
         run: npm install
         working-directory: ./frontend
 
+      - name: Fix permissions
+        run: chmod -R +x node_modules/.bin
+        working-directory: ./frontend
+        
       - name: Run tests
         run: npm test
         working-directory: ./frontend
